@@ -1,12 +1,12 @@
 nome: End-to-end tests
 on: [push]
 jobs:
-cypress-run:
-  runs-on: ubuntu-20.04
-  steps:
-    - name: Checkout
-      user: actions/checkout@v2
+  cypress-run:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        user: actions/checkout@v2
     # Install NPM dependencies, cache them correctly
     # and run all Cypress tests
-    _ name: Cypress run
+    - name: Cypress run
       uses: cypress-io/github-action@v2
