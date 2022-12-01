@@ -9,6 +9,7 @@ describe('precatório', function () {
     it('logar com usuario de sucesso', function () {
         cy.intercept('/api/v1/inicio/secoes').as('conteudoDaPagina');
         cy.intercept('/api/v1/Inicio/Faq').as('faq');
+        
 
         cy.wait(['@conteudoDaPagina', '@faq']);
 
@@ -16,7 +17,10 @@ describe('precatório', function () {
 
         cy.get('[placeholder="Nome de usuário"]').type('sistema');
         cy.get('[placeholder="Senha"]').type('12345678');
-        cy.contains('button', 'Entrar').click()
+        cy.contains('button', 'Entrar').click();
+        cy.wait(6000);
+        cy.contains('Olá Sistema (Administrador Interno)').should('be.visible');
+        
     })
 
     it('desabilitar o botão-seção/menu', function () {
